@@ -1,0 +1,16 @@
+def estimate_yield_loss(probability, sowing_days, nitrogen, regional, growth):
+
+    stage_sensitivity = growth
+
+    nitrogen_effect = 0.15 * nitrogen
+    regional_effect = 0.10 * regional
+
+    loss = (
+        probability * 50 * stage_sensitivity +
+        nitrogen_effect * 8 +
+        regional_effect * 6
+    )
+
+    loss = min(loss, 65)
+
+    return round(loss, 2)
